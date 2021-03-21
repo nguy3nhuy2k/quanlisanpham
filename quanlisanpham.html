@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="CreateTask">
+<input id="task" placeholder="Nhập sản phẩm mới" onchange="CreateTask()"/>
+<button onclick="hienThi()">Hiển thị</button>
+<table border="1">
+    <tr>
+        <th>Tên Sản phẩm</th>
+        <th>Chỉnh sửa</th>
+    </tr>
+    <tr>
+        <tbody id="list">
+        <tr>
+            <td>sony xperia</td>
+            <td><button>Xóa</button></td>
+        </tbody>
+        </tr>
+    </tr>
+</table>
+</body>
+</html>
+<script>
+    let list=["Samsung galaxy","Nokia 6","Xiaomi redmi","iphone 12pro max","oppo A36"]
+    function hienThi(){
+        let content="";
+        for(let i=0; i<list.length;i++) {
+            content += "<tr><td>" + list[i]+"</td><td><button onclick="+"XoaTask("+i+")"+">Xoa</button><button onclick="+"sua("+i+")"+">Sua</button></td></tr>"
+
+        }
+        document.getElementById("list").innerHTML=content
+
+    }function CreateTask(){
+        let spMoi = document.getElementById("spMoi").value;
+        list.push(spMoi);
+        hienThi();
+    }
+    function XoaTask(index){
+        list.splice(index,1);
+        hienThi();
+    }
+    function sua(index){
+        let newValue=prompt("nhập sản phẩm mới", list[index]);
+        list[index] = newValue;
+        hienThi();
+    }
+
+</script>
